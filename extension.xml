@@ -3,40 +3,29 @@
     <properties>
         <name>PF1E Kingdom Builder</name>
         <version>0.1</version>
-        <author>F00lio</author>
+        <author>Your Name</author> <!-- Make sure to update author -->
         <description>Adds kingdom building rules based on Ultimate Campaign and Ultimate Rulership.</description>
-        <loadorder>10</loadorder>
-        <ruleset>
-            <name>PFRPG</name>
-        </ruleset>
-        <ruleset>
-            <name>3.5E</name>
-        </ruleset>
+        <ruleset>Pathfinder</ruleset>
+        <!-- <loadorder> </loadorder> --> <!-- Uncomment and set if needed -->
     </properties>
+
     <base>
-        <!--_____________________-->
-        <!-- GRAPHICS -->
-        <!-- Extension Icon -->
-        <icon name="Kingdomicon" type="logo" file="graphics/icons/Kingdomicon.png"/>
-        <!--Tabletop Settings-->
-        <includefile source="graphics/graphics_icons.xml"/>
-        <!-- Kingdom Builder Scripts and UI-->
-        <includefile source="scripts/kingdom_manager_button.lua"/>
-        <!--____________________-->
-        <!-- SCRIPTS -->
+        <!-- Graphics -->
+        <icon name="kingdom_icon" file="graphics/icons/kingdomicon.png" />
+        <includefile source="graphics/graphics_icons.xml" />
+
+        <!-- Scripts -->
         <!-- Core Manager Script -->
-        <script name="KingdomManager" file="scripts/kingdom_manager.lua"/>
-        <!-- Button Script (referenced by its windowclass) -->
-        <script name="KingdomButton" file="scripts/kingdom_manager_button.lua"/>
-        <!--____________________-->
-        <!-- WINDOWS -->
+        <script name="KingdomManager" file="scripts/kingdom_manager.lua" />
+        <!-- Button Script is loaded via its windowclass in desktop_buttons.xml -->
+        <!-- <script name="KingdomButton" file="scripts/kingdom_manager_button.lua" /> --> <!-- Removed this line -->
+
         <!-- XML Window Definitions -->
-        <includefile source="campaign/desktop/desktop_buttons.xml"/>
-        <includefile source="campaign/windows/kingdom_manager.xml"/>
+        <includefile source="campaign/desktop/desktop_buttons.xml" />
+        <includefile source="campaign/windows/kingdom_manager.xml" />
         <!-- Add includes for character sheet modifications later -->
-        <!-- <includefile source="campaign/charsheet/charsheet_main.xml"/> -->
+        <!-- <includefile source="campaign/charsheet/charsheet_main.xml" /> -->
+
     </base>
 </root>
-
-
 
