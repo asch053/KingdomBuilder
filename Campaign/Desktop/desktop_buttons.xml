@@ -8,7 +8,7 @@
     <button_sidebar name="kingdom_button">
         <!--
             The <icon> tag references an icon defined in graphics/graphics_icons.xml.
-            Make sure you have an icon named "kingdomicon" defined there.
+            Make sure you have an icon named "Kingdomicon" defined there.
         -->
         <icon>kingdomicon</icon>
         <!-- Tooltip text displayed when hovering over the button -->
@@ -23,7 +23,7 @@
             "button_options" is usually near the bottom. Adjust as needed for desired position.
             Common targets: button_library, button_characters, button_notes, button_options
         -->
-        <insertbefore>button_options</insertbefore>
+        <insertbefore>button_characters</insertbefore>
     </button_sidebar>
 
     <!-- Define the Window Class that Handles the Button Logic -->
@@ -32,7 +32,7 @@
             Reference the Lua script file that might contain more complex logic if needed.
             For simple actions like opening a window, the logic can be embedded directly.
         -->
-        <script file="extensions/KingdomBuilder/Scripts/kingdom_manager_button.lua" />
+        <script file="scripts/kingdom_manager_button.lua" />
         
         <sheetdata>
             <!--

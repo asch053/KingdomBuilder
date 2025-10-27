@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="4.1">
+    <windowclass name="kingdom_manager">
+        <!-- Reference the main script for the manager (optional) -->
+        <script file="scripts/kingdom_manager.lua"/>
+
+        <!-- Sheetdata / UI placeholder -->
+        <sheetdata>
+            <!-- Add UI controls or script-based behavior here -->
+        </sheetdata>
+
+        <!-- Minimal template for the window; expand as needed -->
+        <template name="kingdom_manager">
+            <window>
+                <title>Kingdom Manager</title>
+            </window>
+        </template>
+    </windowclass>
+</root>
