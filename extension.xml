@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="4.1">
+    <properties>
+        <name>PF1E Kingdom Builder</name>
+        <version>0.1</version>
+        <author>F00lio</author>
+        <description>Adds kingdom building rules based on Ultimate Campaign and Ultimate Rulership.</description>
+        <loadorder>10</loadorder>
+        <ruleset>
+            <name>PFRPG</name>
+        </ruleset>
+        <ruleset>
+            <name>3.5E</name>
+        </ruleset>
+    </properties>
+    <base>
+        <!--Extension Icon-->
+        <icon name="Kingdomicon" type="logo" file="Graphics/Icons/Kingdomicon.png"/ >
+        <!--Tabletop Settings-->
+        <includefile source="Graphics/graphics_icons.xml"/ >
+
+        <!-- Kingdom Builder Scripts and UI-->
+        <includefile source="Scripts/kingdom_manager_button.lua"/ >
+        <includefile source="Campaign/campaign_buttons.xml"/ >
+        <includefile source="Campaign/desktop_buttons.xml"/ >
+    </base>
+</root>

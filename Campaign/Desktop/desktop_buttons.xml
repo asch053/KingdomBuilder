@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+    This file defines custom buttons added to the main FGU sidebar.
+    It includes the button itself and the windowclass that controls its behavior.
+-->
+<root version="4.1">
+    <!-- Define the Sidebar Button Appearance and Link to its Class -->
+    <button_sidebar name="kingdom_button">
+        <!--
+            The <icon> tag references an icon defined in graphics/graphics_icons.xml.
+            Make sure you have an icon named "kingdomicon" defined there.
+        -->
+        <icon>kingdomicon</icon>
+        <!-- Tooltip text displayed when hovering over the button -->
+        <tooltip text="Kingdom Manager" />
+        <!--
+            The <class> tag links this button definition to the windowclass below,
+            which contains the script handling what happens when the button is pressed.
+        -->
+        <class>button_kingdom_manager</class>
+        <!--
+            The <insertbefore> tag positions the button relative to existing sidebar buttons.
+            "button_options" is usually near the bottom. Adjust as needed for desired position.
+            Common targets: button_library, button_characters, button_notes, button_options
+        -->
+        <insertbefore>button_options</insertbefore>
+    </button_sidebar>
+
+    <!-- Define the Window Class that Handles the Button Logic -->
+    <windowclass name="button_kingdom_manager">
+        <!--
+            Reference the Lua script file that might contain more complex logic if needed.
+            For simple actions like opening a window, the logic can be embedded directly.
+        -->
+        <script file="extensions/KingdomBuilder/Scripts/kingdom_manager_button.lua" />
+        
+        <sheetdata>
+            <!--
+                This <button_sidebar> within the windowclass provides the actual
+                script execution context for the button defined above.
+            -->
+            <button_sidebar> <!-- Name here doesn't matter as much, links by windowclass -->
+                <script>
+                    -- This function is called when the sidebar button is clicked.
+                    function onButtonPress()
+                        -- Attempts to open the main Kingdom Manager window.
+                        -- "kingdom_manager" must match the name of the windowclass
+                        -- defined in your kingdom_manager.xml file.
+                        -- The 'nil' argument means it doesn't try to link to a specific database node initially.
+                        Interface.openWindow("kingdom_manager", nil);
+                    end
+                </script>
+            </button_sidebar>
+        </sheetdata>
+    </windowclass>
+</root>

@@ -1,0 +1,7 @@
+<root>
+<!--  Extension Logo  -->
+<icon name="Kingdomicon" type="logo" file=".\Icons\Kingdomicon.png"/>
+<!--  Sidebar  -->
+<icon name="button_world_down" file="graphics/sidebar/button_world.png"/>
+<icon name="button_world" file="graphics/sidebar/button_world_down.png"/>
+</root>
