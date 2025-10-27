@@ -14,14 +14,29 @@
         </ruleset>
     </properties>
     <base>
-        <!--Extension Icon-->
-        <icon name="Kingdomicon" type="logo" file="Graphics/Icons/Kingdomicon.png"/ >
+        <!--_____________________-->
+        <!-- GRAPHICS -->
+        <!-- Extension Icon -->
+        <icon name="Kingdomicon" type="logo" file="graphics/icons/Kingdomicon.png"/>
         <!--Tabletop Settings-->
-        <includefile source="Graphics/graphics_icons.xml"/ >
-
+        <includefile source="graphics/graphics_icons.xml"/>
         <!-- Kingdom Builder Scripts and UI-->
-        <includefile source="Scripts/kingdom_manager_button.lua"/ >
-        <includefile source="Campaign/campaign_buttons.xml"/ >
-        <includefile source="Campaign/desktop_buttons.xml"/ >
+        <includefile source="scripts/kingdom_manager_button.lua"/>
+        <!--____________________-->
+        <!-- SCRIPTS -->
+        <!-- Core Manager Script -->
+        <script name="KingdomManager" file="scripts/kingdom_manager.lua"/>
+        <!-- Button Script (referenced by its windowclass) -->
+        <script name="KingdomButton" file="scripts/kingdom_manager_button.lua"/>
+        <!--____________________-->
+        <!-- WINDOWS -->
+        <!-- XML Window Definitions -->
+        <includefile source="campaign/desktop/desktop_buttons.xml"/>
+        <includefile source="campaign/windows/kingdom_manager.xml"/>
+        <!-- Add includes for character sheet modifications later -->
+        <!-- <includefile source="campaign/charsheet/charsheet_main.xml"/> -->
     </base>
 </root>
+
+
+
