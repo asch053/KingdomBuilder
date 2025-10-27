@@ -1,6 +1,6 @@
 <root>
 <!--  Extension Logo  -->
-<icon name="kingdomicon" type="logo" file="graphics/icons/kingdomicon.png"/>
+<icon name="kingdom_icon" type="logo" file="graphics/icons/kingdom_icon.png"/>
 <!--  Sidebar  -->
 <icon name="button_world_down" file="graphics/sidebar/button_world.png"/>
 <icon name="button_world" file="graphics/sidebar/button_world_down.png"/>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="4.1">
+    <string name="kingdom_manager_title">Kingdom Manager</string>
+    
+    <!-- Tab Names -->
+    <string name="tab_stats">Kingdom Stats</string>
+    <string name="tab_edicts">Kingdom Edicts</string>
+    <string name="tab_settlements">Settlements</string>
+    <string name="tab_hexes">Kingdom Map</string>
+    
+    <!-- Button Labels -->
+    <string name="button_advance_month">Advance Month</string>
+    <string name="button_add_settlement">Add Settlement</string>
+    <string name="button_add_hex">Add Hex</string>
+    
+    <!-- Labels -->
+    <string name="label_month">Month:</string>
+    <string name="label_year">Year:</string>
+    
+    <!-- Messages -->
+    <string name="msg_confirm_advance">Are you sure you want to advance to the next month?</string>
+    
+    <!-- Error Messages -->
+    <string name="error_invalid_input">Invalid input provided</string>
+</root>

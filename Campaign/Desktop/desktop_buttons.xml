@@ -4,36 +4,43 @@
     It includes the button itself and the windowclass that controls its behavior.
 -->
 <root version="4.1">
-    <!-- Define the Sidebar Button Appearance and Link to its Class -->
-    <button_sidebar name="kingdom_button">
+
+    <!-- Define a new group for Kingdom buttons -->
+    <button_group name="kingdom_group">
+        <category>KINGDOM</category> <!-- This text appears as the category header -->
+        <buttons>
+            <!-- Define the Sidebar Button Appearance and Link to its Class -->
+            <button_sidebar name="kingdom_button">
+                <!--
+                    The <icon> tag references an icon defined in graphics/graphics_icons.xml.
+                    Make sure you have an icon named "kingdom_icon" defined there.
+                -->
+                <icon>kingdom_icon</icon>
+                <!-- Tooltip text displayed when hovering over the button -->
+                <tooltip text="Kingdom Manager" />
+                <!--
+                    The <class> tag links this button definition to the windowclass below,
+                    which contains the script handling what happens when the button is pressed.
+                -->
+                <class>button_kingdom_manager</class>
+            </button_sidebar>
+            <!-- Add more kingdom-related buttons here inside the <buttons> tag if needed later -->
+        </buttons>
         <!--
-            The <icon> tag references an icon defined in graphics/graphics_icons.xml.
-            Make sure you have an icon named "Kingdomicon" defined there.
+            The <insertbefore> tag positions the button group relative to existing sidebar groups.
+            Adjust as needed. Common groups: campaign, combat, library, party, utility
         -->
-        <icon>kingdomicon</icon>
-        <!-- Tooltip text displayed when hovering over the button -->
-        <tooltip text="Kingdom Manager" />
-        <!--
-            The <class> tag links this button definition to the windowclass below,
-            which contains the script handling what happens when the button is pressed.
-        -->
-        <class>button_kingdom_manager</class>
-        <!--
-            The <insertbefore> tag positions the button relative to existing sidebar buttons.
-            "button_options" is usually near the bottom. Adjust as needed for desired position.
-            Common targets: button_library, button_characters, button_notes, button_options
-        -->
-        <insertbefore>button_characters</insertbefore>
-    </button_sidebar>
+        <insertbefore>utility</insertbefore>
+    </button_group>
 
     <!-- Define the Window Class that Handles the Button Logic -->
     <windowclass name="button_kingdom_manager">
         <!--
             Reference the Lua script file that might contain more complex logic if needed.
             For simple actions like opening a window, the logic can be embedded directly.
+            Make sure this path is correct:
         -->
-        <script file="scripts/kingdom_manager_button.lua" />
-        
+        <script file="extensions/PF1E_KingdomBuilder/scripts/kingdom_manager_button.lua" />
         <sheetdata>
             <!--
                 This <button_sidebar> within the windowclass provides the actual
@@ -54,3 +61,4 @@
         </sheetdata>
     </windowclass>
 </root>
+

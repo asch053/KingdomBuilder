@@ -1,19 +1,221 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root version="4.1">
     <windowclass name="kingdom_manager">
-        <!-- Reference the main script for the manager (optional) -->
-        <script file="scripts/kingdom_manager.lua"/>
-
-        <!-- Sheetdata / UI placeholder -->
+        <frame>utilitybox</frame>
+        <placement>center</placement>
+        <size>800,600</size>
+        <script file="extensions/MyKingdomExt/scripts/kingdom_manager.lua" />
         <sheetdata>
-            <!-- Add UI controls or script-based behavior here -->
-        </sheetdata>
+            <tabs name="tabs">
+                <tab name="stats" text="Stats">
+                    <subwindow name="stats_content">
+                        <class>kingdom_stats_tab</class>
+                        <activate /> </subwindow>
+                </tab>
+                <tab name="edicts" text="Edicts">
+                    <subwindow name="edicts_content">
+                        <class>kingdom_edicts_tab</class>
+                    </subwindow>
+                </tab>
+                <tab name="settlements" text="Settlements">
+                    <subwindow name="settlements_content">
+                        <class>kingdom_settlements_tab</class>
+                    </subwindow>
+                </tab>
+                <tab name="hexes" text="Hexes">
+                    <subwindow name="hexes_content">
+                        <class>kingdom_hexes_tab</class>
+                    </subwindow>
+                </tab>
+            </tabs>
+            <button name="advance_month_button">
+                <bounds>650,550,120,25</bounds> <text>Advance Month</text>
+                <script>
+                    function onButtonPress()
+                        KingdomManager.advanceMonth();
+                    end
+                </script>
+            </button>
+            <number_static name="current_month">
+                <bounds>450, 550, 80, 20</bounds>
+                <label>Month:</label>
+                <datasource>.stats.current_month</datasource>
+                <readonly />
+            </number_static>
+            <number_static name="current_year">
+                <bounds>540, 550, 80, 20</bounds>
+                <label>Year:</label>
+                <datasource>.stats.current_year</datasource>
+                <readonly />
+            </number_static>
+                    </sheetdata>
+                </windowclass>
 
-        <!-- Minimal template for the window; expand as needed -->
-        <template name="kingdom_manager">
-            <window>
-                <title>Kingdom Manager</title>
-            </window>
-        </template>
+                <windowclass name="kingdom_stats_tab">
+                    <datasourcelock /> <sheetdata>
+                        <stringfield name="kingdom_name">
+                            <bounds>20,20,200,20</bounds>
+                            <label>Kingdom Name:</label>
+                            <datasource>.stats.name</datasource>
+                        </stringfield>
+                        <string_cycled name="alignment">
+                            <bounds>250,20,100,20</bounds>
+                            <label>Alignment:</label>
+                            <datasource>.stats.alignment</datasource>
+                            <labels>LG|NG|CG|LN|N|CN|LE|NE|CE</labels>
+                            <values>LG|NG|CG|LN|N|CN|LE|NE|CE</values>
+                        </string_cycled>
+                        <number_static name="treasury">
+                            <bounds>20,60,100,20</bounds>
+                            <label>Treasury (BP):</label>
+                            <datasource>.stats.treasury</datasource> <readonly />
+                        </number_static>
+                        <number_static name="unrest">
+                            <bounds>130,60,100,20</bounds>
+                            <label>Unrest:</label>
+                            <datasource>.stats.unrest</datasource>
+                            <readonly />
+                        </number_static>
+                        <number_static name="population">
+                            <bounds>240,60,100,20</bounds>
+                            <label>Population:</label>
+                            <datasource>.stats.population_calc</datasource> <readonly />
+                        </number_static>
+                        <number_static name="economy_calc">
+                            <bounds>20,100,100,20</bounds>
+                            <label>Economy:</label>
+                            <datasource>.stats.economy_calc</datasource>
+                            <readonly />
+                        </number_static>
+                        <number_static name="loyalty_calc">
+                            <bounds>130,100,100,20</bounds>
+                            <label>Loyalty:</label>
+                            <datasource>.stats.loyalty_calc</datasource>
+                            <readonly />
+                        </number_static>
+                        <number_static name="stability_calc">
+                            <bounds>240,100,100,20</bounds>
+                            <label>Stability:</label>
+                            <datasource>.stats.stability_calc</datasource>
+                            <readonly />
+                        </number_static>
+                        <number_static name="control_dc_calc">
+                            <bounds>350,100,100,20</bounds>
+                            <label>Control DC:</label>
+                            <datasource>.stats.control_dc_calc</datasource>
+                            <readonly />
+                        </number_static>
+                        <number_static name="manpower_calc">
+                            <bounds>20, 140, 100, 20</bounds>
+                            <label>Manpower:</label>
+                            <datasource>.stats.manpower_calc</datasource>
+                            <readonly />
+                        </number_static>
+                        <number_static name="elites_calc">
+                            <bounds>130, 140, 100, 20</bounds>
+                            <label>Elites:</label>
+                            <datasource>.stats.elites_calc</datasource>
+                            <readonly />
+                        </number_static>
+             </sheetdata>
     </windowclass>
+
+    <windowclass name="kingdom_edicts_tab">
+         <datasourcelock />
+         <sheetdata>
+             <string_cycled name="edict_expansion">
+                <bounds>20,20,150,20</bounds>
+                <label>Expansion:</label>
+                <datasource>.edicts.expansion</datasource>
+                <labels>Isolationist|Cautious|Standard|Aggressive|Imperialist</labels>
+                <values>Isolationist|Cautious|Standard|Aggressive|Imperialist</values>
+                <script>
+                    function onValueChanged()
+                        KingdomManager.onEdictChanged();
+                    end
+                </script>
+            </string_cycled>
+            <label name="expansion_effect_label">
+                <bounds>180, 20, 300, 20</bounds>
+                <static text="Effects:" />
+            </label>
+            <string_static name="expansion_effect"> <bounds>230, 20, 300, 20</bounds>
+            </string_static>
+
+             <label name="edict_commission_label">
+                <bounds>20, 140, 150, 20</bounds>
+                <static text="Commission: Special" />
+            </label>
+             </sheetdata>
+    </windowclass>
+
+    <windowclass name="kingdom_settlements_tab">
+        <datasourcelock />
+        <sheetdata>
+            <windowlist name="settlement_list">
+                <bounds>20,20,-20,150</bounds>
+                <datasource>.settlements</datasource>
+                <class>kingdom_settlement_item</class>
+                <sortby><control>name</control></sortby>
+            </windowlist>
+            <button_add name="add_settlement">
+                 <bounds>20, 180, 20, 20</bounds>
+                 </button_add>
+
+             <subwindow name="settlement_details">
+                 <bounds>20, 210, -20, -215</bounds>
+                 <class>kingdom_settlement_detail</class>
+                 </subwindow>
+        </sheetdata>
+    </windowclass>
+
+    <windowclass name="kingdom_settlement_item">
+         <sheetdata>
+            <linkfield name="namelink">
+                 <bounds>0,0,150,20</bounds>
+                 <class>kingdom_settlement_detail</class> <descriptionfield>name</descriptionfield>
+                 <allowresize />
+             </linkfield>
+             <number_static name="districts">
+                 <bounds>160,0,50,20</bounds>
+                 <sourcedecorator><control>districts</control></sourcedecorator>
+                 <readonly />
+             </number_static>
+             <button_delete_mini name="delete_settlement">
+                 <anchored><to>namelink</to><position>right</position><offset>10,0</offset></anchored>
+                 </button_delete_mini>
+         </sheetdata>
+    </windowclass>
+
+     <windowclass name="kingdom_settlement_detail">
+        <sheetdata>
+             <stringfield name="name">
+                <bounds>10,10,150,20</bounds>
+                <label>Name:</label>
+                <datasource>.name</datasource>
+            </stringfield>
+            <windowlist name="building_list">
+                 <bounds>10, 40, -10, 100</bounds>
+                 <datasource>.buildings</datasource>
+                 </windowlist>
+             </sheetdata>
+    </windowclass>
+
+    <windowclass name="kingdom_hexes_tab">
+         <datasourcelock />
+         <sheetdata>
+             <windowlist name="hex_list">
+                 <bounds>20,20,-20,400</bounds>
+                 <datasource>.hexes</datasource>
+                 <class>kingdom_hex_item</class> <sortby><control>coords</control></sortby>
+            </windowlist>
+             <button_add name="add_hex">
+                 <bounds>20, 430, 20, 20</bounds>
+                 </button_add>
+        </sheetdata>
+     </windowclass>
+
+     <windowclass name="kingdom_hex_item">
+         </windowclass>
+
 </root>
